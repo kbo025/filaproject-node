@@ -1,9 +1,18 @@
 'use strict'
 
 const debug = require('debug')('platziverse:db:setup')
+const inquirer = require('inquire')
+const chalk = require('chalk')
 const db = require('./')
 
+
+const prompt = inquirer.createPromptModule()
+
 async function setup () {
+  const answer = await prompt({
+    
+  })
+
   const config = {
     database: process.env.DB_NAME || 'platziverse',
     username: process.env.DB_USER || 'postgres',
