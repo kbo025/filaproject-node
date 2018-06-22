@@ -3,15 +3,14 @@
 const Sequelize = require('sequelize')
 const setupDatabase = require('../lib/db')
 
-module.export = function setupAgentModel (config) {
+module.export = function setupAdminModel (config) {
   const sequelize = setupDatabase(config)
 
   return sequelize.define(
-    'agent',
+    'admin',
     {
       uuid: {type: Sequelize.STRING, allowNull: false},
       name: {type: Sequelize.STRING, allowNull: false},
-      status: {type: Sequelize.INTEGER, allowNull: false, defaultValue: 0},
     }
   )
 }
