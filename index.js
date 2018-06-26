@@ -16,7 +16,7 @@ module.export = async function (config) {
   const SerieModel = setupSerieModel(config)
 
   AdminModel.hasMany(AgentModel)
-  ClientModel
+  
 
   AgentModel.hasMany(MetricModel)
   MetricModel.belongsTo(AgentModel)
