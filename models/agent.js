@@ -3,15 +3,15 @@
 const Sequelize = require('sequelize')
 const setupDatabase = require('../lib/db')
 
-module.export = function setupAgentModel (config) {
+module.exports = function setupAgentModel (config) {
   const sequelize = setupDatabase(config)
 
   return sequelize.define(
     'agent',
     {
-      uuid: {type: Sequelize.STRING, allowNull: false},
+      uuid: {type: Sequelize.UUID, allowNull: false, defaultValue: Sequelize.UUIDV4},
       name: {type: Sequelize.STRING, allowNull: false},
-      status: {type: Sequelize.INTEGER, allowNull: false, defaultValue: 0},
+      status: {type: Sequelize.INTEGER, allowNull: false, defaultValue: 0}
     }
   )
 }
