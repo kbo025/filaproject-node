@@ -1,18 +1,21 @@
 {
-  "name": "platziverse-db",
+  "name": "fila",
   "version": "1.0.0",
   "description": "A simple IoT Plataform - DB Module ",
   "main": "index.js",
   "scripts": {
     "lint": "standard --fix",
-    "setup": "DEBUG=platziverse:* node setup.js",
-    "test": "DEBUG=platziverse:* ava tests/ --verbose"
+    "setup": "DEBUG=fila:* node setup.js",
+    "test": "DEBUG=fila:* nyc --reporter=lcov ava tests/ --verbose"
   },
   "author": "kbo025",
   "license": "MIT",
   "devDependencies": {
     "ava": "^0.25.0",
     "nyc": "^12.0.2",
+    "proxyquire": "^2.0.1",
+    "sinon": "^6.1.4",
+    "sqlite3": "^4.0.2",
     "standard": "^11.0.1"
   },
   "dependencies": {

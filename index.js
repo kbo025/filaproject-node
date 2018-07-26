@@ -5,13 +5,23 @@ const setupAgentModel = require('./models/agent')
 const setupAdminModel = require('./models/admin')
 const setupClientModel = require('./models/client')
 const setupSerieModel = require('./models/serie')
-// const setupMetricModel = require('./models/metric')
 const setupTicketModel = require('./models/ticket')
+const defaults = require('defaults')
 
 module.exports = async function (config) {
+  config = defaults(config, {
+    dialect: 'sqlite',
+    pool: {
+      max: 10,
+      min: 0,
+      idle: 10000
+    },
+    query: {
+      raw: true
+    }
+  })
   const sequelize = setupDatabase(config)
   const AgentModel = setupAgentModel(config)
-  // const MetricModel = setupMetricModel(config)
   const ClientModel = setupClientModel(config)
   const AdminModel = setupAdminModel(config)
   const SerieModel = setupSerieModel(config)
@@ -31,9 +41,6 @@ module.exports = async function (config) {
   TicketModel.belongsTo(AgentModel)
 
   ClientModel.hasOne(TicketModel)
-
-  // AgentModel.hasMany(MetricModel)
-  // MetricModel.belongsTo(AgentModel)
 
   await sequelize.authenticate()
 
