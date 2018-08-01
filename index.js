@@ -1,5 +1,10 @@
 'use strict'
 
+const setupAgent = require('./lib/agent')
+const setupClient = require('./lib/client')
+const setupAdmin = require('./lib/admin')
+const setupSerie = require('./lib/serie')
+const setupTicket = require('./lib/tciket')
 const setupDatabase = require('./lib/db')
 const setupAgentModel = require('./models/agent')
 const setupAdminModel = require('./models/admin')
@@ -48,11 +53,11 @@ module.exports = async function (config) {
     await sequelize.sync({ force: true })
   }
 
-  const Agent = {}
-  const Client = {}
-  const Admin = {}
-  const Serie = {}
-  const Ticket = {}
+  const Agent = setupAgent(AgentModel)
+  const Client = setupClient(ClientModel)
+  const Admin = setupAdmin(AdminModel)
+  const Serie = setupSerie(SerieModel)
+  const Ticket = setupTicket(TicketModel)
 
   return {
     Agent,

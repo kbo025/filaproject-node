@@ -1,3 +1,12 @@
+/**
+ *  STATUS TICKET
+ *  0: en espera
+ *  1: llamado
+ *  2: en atendimiento
+ *  3: no atendido
+ *  4: atendido
+ */
+
 'use estrict'
 
 const Sequelize = require('sequelize')
